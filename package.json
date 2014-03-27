@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jasminum test && jshint --verbose ."
   },
+  "bin": "index",
   "keywords": [
     "require",
     "commonjs",
