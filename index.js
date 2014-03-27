@@ -116,7 +116,7 @@ function getSymbols(string) {
 }
 
 function help() {
-    console.log("require-and-replce", "<find>", "<replace>");
+    console.log("require-and-replace", "<find>", "<replace>");
     console.log();
     console.log("Finds all `require()` calls for the given <find> module and");
     console.log("replaces them will require() calls for given <replace> module.");
