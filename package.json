@@ -1,6 +1,6 @@
 {
   "name": "require-and-replace",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Intelligent find and replace for require() calls",
   "main": "index.js",
   "scripts": {
