@@ -1,5 +1,7 @@
 {
     "node": true,
+    "unused": true,
+    "undef": true,
     "globals": {
         "beforeEach": false,
         "afterEach": false,
