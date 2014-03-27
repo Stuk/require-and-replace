@@ -4,7 +4,7 @@
   "description": "Intelligent find and replace for require() calls",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasminum test && jshint --verbose ."
   },
   "keywords": [
     "require",
@@ -19,5 +19,9 @@
     "mr": "^2.0.1",
     "q": "^2.0.1",
     "minimist": "0.0.8"
+  },
+  "devDependencies": {
+    "jasminum": "^2.0.1",
+    "jshint": "^2.4.4"
   }
 }
