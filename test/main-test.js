@@ -23,7 +23,6 @@ describe("require and replace", function () {
 
     it("replaces parent relative find with sibling relative replace", function () {
         var fs = MockFS({
-            "package.json": "{}",
             "dir": {
                 "example.js": 'require("../find");'
             }
@@ -39,7 +38,6 @@ describe("require and replace", function () {
 
     it("replaces sibling relative find with parent relative replace", function () {
         var fs = MockFS({
-            "package.json": "{}",
             "dir": {
                 "example.js": 'require("./find");'
             }
@@ -50,6 +48,36 @@ describe("require and replace", function () {
         })
         .then(function (content) {
             expect(content).toEqual('require("../replace");');
+        });
+    });
+
+    it("replaces absolute find with parent relative replace", function () {
+        var fs = MockFS({
+            "dir": {
+                "example.js": 'require("find");'
+            }
+        });
+        return rar("find", "./replace", fs)
+        .then(function () {
+            return fs.read("dir/example.js");
+        })
+        .then(function (content) {
+            expect(content).toEqual('require("../replace");');
+        });
+    });
+
+    it("replaces sibling relative find with absolute replace", function () {
+        var fs = MockFS({
+            "dir": {
+                "example.js": 'require("./find");'
+            }
+        });
+        return rar("./dir/find", "replace", fs)
+        .then(function () {
+            return fs.read("dir/example.js");
+        })
+        .then(function (content) {
+            expect(content).toEqual('require("replace");');
         });
     });
 });

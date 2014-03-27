@@ -10,16 +10,14 @@
     "require",
     "commonjs",
     "find",
-    "replace",
-    "mr"
+    "replace"
   ],
   "author": "Stuart Knightley <stuart@stuartk.com>",
   "license": "BSD",
   "dependencies": {
-    "mr": "^2.0.1",
     "q": "^2.0.1",
-    "minimist": "0.0.8",
-    "q-io": "^2.0.2"
+    "q-io": "^2.0.2",
+    "minimist": "0.0.8"
   },
   "devDependencies": {
     "jasminum": "^2.0.1",
