@@ -80,4 +80,34 @@ describe("require and replace", function () {
             expect(content).toEqual('require("replace");');
         });
     });
+
+    it("leaves the quotes alone", function () {
+        var fs = MockFS({
+            "dir": {
+                "example.js": "require('./find');"
+            }
+        });
+        return rar("a", "b", fs)
+        .then(function () {
+            return fs.read("dir/example.js");
+        })
+        .then(function (content) {
+            expect(content).toEqual("require('./find');");
+        });
+    });
+
+    it("handles module ids with quote", function () {
+        var fs = MockFS({
+            "dir": {
+                "example.js": "require('quote');"
+            }
+        });
+        return rar("quote", "qu'ote", fs)
+        .then(function () {
+            return fs.read("dir/example.js");
+        })
+        .then(function (content) {
+            expect(content).toEqual("require('qu\\'ote');");
+        });
+    });
 });
