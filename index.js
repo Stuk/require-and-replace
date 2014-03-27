@@ -24,10 +24,10 @@ function help() {
 if (require.main === module) {
     var argv = require('minimist')(process.argv.slice(2));
 
-    if (!argv._ || argv.length !== 2) {
+    if (!argv._ || argv._.length !== 2) {
         help();
         process.exit(1);
     } else {
-        main(argv._[0], argv._[1]);
+        main(argv._[0], argv._[1]).done();
     }
 }
