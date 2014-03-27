@@ -110,4 +110,20 @@ describe("require and replace", function () {
             expect(content).toEqual("require('qu\\'ote');");
         });
     });
+
+    it("handles surrounding content", function () {
+        var fs = MockFS({
+            "dir": {
+                "example.js": 'var a = require("a");\nvar b = require("find");\n\nconsole.log(b);'
+            }
+        });
+        return rar("find", "replace", fs)
+        .then(function () {
+            return fs.read("dir/example.js");
+        })
+        .then(function (content) {
+            expect(content).toEqual('var a = require("a");\nvar b = require("replace");\n\nconsole.log(b);');
+        });
+    });
+
 });

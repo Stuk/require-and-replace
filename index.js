@@ -24,7 +24,7 @@ function main(find, replace, fs) {
 
                 return fs.read(path)
                 .then(function (text) {
-                    text = String(text).replace(/(^|[^\w\$_.])require\s*\(\s*(["'])([^\2]*)\2\s*\)/g, function(_, lead, quote, id) {
+                    text = String(text).replace(/(^|[^\w\$_.])require\s*\(\s*(["'])((?:(?!\2).)*)\2\s*\)/g, function(_, lead, quote, id) {
                         if (id === relativeFind) {
                             id = relativeReplace;
                         }
